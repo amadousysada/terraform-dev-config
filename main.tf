@@ -1,11 +1,11 @@
 # Configure the Hetzner provider
 provider "hcloud" {
-  token = "<your-hetzner-api-token>"
+  token = var.hcloud_token
 }
 
 # Create a new Hetzner Cloud server
 resource "hcloud_server" "example" {
-  name = "example-server"
+  name = "asad"
   server_type = "cx11"
   image = "ubuntu-20.04"
   ssh_keys = [
