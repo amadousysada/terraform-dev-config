@@ -25,19 +25,27 @@ workflows:
           persist-workspace: true
           requires:
             - terraform/validate
+      - deploy:
+          type: approval
+          requires:
+            - terraform/plan
       - terraform/apply:
           attach-workspace: true
           context: terraform
           filters:
             branches:
               only: main
-          type: approval
           requires:
-            - terraform/plan
+            - deploy
       - destroy:
-          filters:
-            branches:
-              only: main
           type: approval
           requires:
             - terraform/apply
+      - terraform/destroy:
+          attach-workspace: true
+          context: terraform
+          filters:
+            branches:
+              only: main
+          requires:
+            - destroy
