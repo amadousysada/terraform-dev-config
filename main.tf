@@ -11,7 +11,7 @@ resource "hcloud_server" "amadousysada_web" {
   ssh_keys = [
     "fedora-public-ssh-key"
   ]
-  location = "nbg1"
+  location = "hel1"
 }
 
 # Output the server's IP address
