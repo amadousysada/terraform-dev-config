@@ -5,9 +5,9 @@ provider "hcloud" {
 
 # Create a new Hetzner Cloud server
 resource "hcloud_server" "amadousysada_web" {
-  name = "asad"
+  name = var.node_name
   server_type = "cx11"
-  image = "debian-11"
+  image = "ubuntu-22.04"
   ssh_keys = [
     "fedora-public-ssh-key"
   ]
